@@ -83,14 +83,13 @@ The road network can be viewed as a directed graph. Hence while predicting the s
 Following figure illustrates the algorithm to compute `increasing` and `decreasing`.
 ![2](https://user-images.githubusercontent.com/2561578/37563578-398f42a4-2a41-11e8-93f8-fc5622894315.png)
 Hence the data had these features: `highway`, `curvature`, `increasing`, and `decreasing`.
-### Model 5- Random Forest
-Using random forest ensemble technique, regression model is built. Random forest are less prone to over fitting along with that cross validation set was tested against the model to verify that. The model had fair [r2 score](https://en.wikipedia.org/wiki/Coefficient_of_determination)
+### Model 5- Machine Learning Modelling
+To identify the complex non-linearity between the features  `highway`, `curvature`, `increasing`, and `decreasing` and the label `speed`, machine learning modelling is used. This is a supervised learning problem. 
 
+#### Random Forest
+Random Forests works by training numerous decision trees,"forest" each based on a different resampling of the original training data.  Then averaging them the variance of the final model can be greatly reduced over that of a single tree. In practice the only limitation on the size of the forest is computing time as an infinite number of trees could be trained without ever increasing bias and with a continual (if asymptotically declining) decrease in the variance.
 
-Model Performance 
-Training dataset r2: Cofficient of Determination 0.69
-Testing dataset r2: Cofficient of Determination 0.68
-
-RMSE for ML model: **9.48**, which is not very less than the simpler models but here the model is does a fair trade off between bias and variance. 
-
-
+#### Hyper Parameter Tuning for Model Selection
+The model created using following parameters
+`regr = RandomForestRegressor( n_estimators=1000, max_depth=10, min_samples_leaf=50, oob_score= True, random_state=0)
+`
