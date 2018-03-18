@@ -69,6 +69,7 @@ Now, after having basic data engineering it was time to dive deep into Open Stre
 #### Curvature
 Even though all the data points (roads), in the dataset were of `type`  [LineString](https://tools.ietf.org/html/rfc7946#appendix-A.2), consider the following  [lineString](https://tools.ietf.org/html/rfc7946#appendix-A.2) examples. 
 ![1](https://user-images.githubusercontent.com/2561578/37563086-09829db4-2a36-11e8-8c6b-39df16c79226.jpeg)
+
 Naturally, the curvature of the road affects the speed hence for each data point, the curvature was calculated.
 #### Neighbouring Roads
 The road network can be viewed as a directed graph. Hence while predicting the speed of an edge(road), the neighboring edge's(connected roads) speed should not be ignored. A hypothesis was developed to consider the effect of the category to which the neighbor belongs. Following algorithm was developed for this purpose:
