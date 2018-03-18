@@ -60,7 +60,7 @@ For two-way roads, the density of the difference between the speeds of roads goi
 ![figure_1](https://user-images.githubusercontent.com/2561578/37562712-45d59618-2a2c-11e8-9a11-7563075da9e0.png)
 
 Hence the algorithm just returns the speed of the opposite direction. Considerably better performance than previous models.
-Drawback: In real-time depending on opposite lane's speed is highly unreliable.  Whereas, after discussing with @morgan, it was cleared that the two-way roads are considered separate one-way roads going in `forward` and `backward` directions.
+Drawback: In real-time depending on opposite lane's speed is highly unreliable.  Whereas, after discussing with @morgan, it was cleared that the two-way roads are considered separate one-way roads going in `forward` and `reverse` directions.
 
 The performance of above models in terms of RMSE is represented as below:
 ![mp1](https://user-images.githubusercontent.com/2561578/37562993-a2a23944-2a33-11e8-9b95-42309a232ed1.png)
