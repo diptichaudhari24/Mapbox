@@ -20,8 +20,7 @@ The data for each road in Portland in [GeoJSON](http://geojson.org/) format is p
       }
 }
 ```
-Each line can be visualized in a tool such as [geojson.io](http://geojson.io/). The above data can be visualized as below:
-![data](https://user-images.githubusercontent.com/2561578/37561582-021a7f0a-2a0f-11e8-9ff5-7ad7fe0f28e4.png)
+Each line can be visualized in a tool such as [geojson.io](http://geojson.io/). 
 Understanding the features of data:
 - [name](https://wiki.openstreetmap.org/wiki/Key:name)
   - the name of the road
@@ -64,4 +63,26 @@ Drawback: In real-time depending on opposite lane's speed is highly unreliable. 
 
 The performance of above models in terms of RMSE is represented as below:
 ![mp1](https://user-images.githubusercontent.com/2561578/37562993-a2a23944-2a33-11e8-9b95-42309a232ed1.png)
+
+Now, after having basic data engineering it was time to dive deep into Open Street Map feature's domain. 
+### Feature Engineering
+#### Curvature
+Even though all the data points (roads), in the dataset were of `type`  [LineString](https://tools.ietf.org/html/rfc7946#appendix-A.2), consider the following  [lineString](https://tools.ietf.org/html/rfc7946#appendix-A.2) examples. 
+![1](https://user-images.githubusercontent.com/2561578/37563086-09829db4-2a36-11e8-8c6b-39df16c79226.jpeg)
+Naturally, the curvature of the road affects the speed hence for each data point, the curvature was calculated.
+#### Neighbouring Roads
+The road network can be viewed as a directed graph. Hence while predicting the speed of an edge(road), the neighboring edge's(connected roads) speed should not be ignored. A hypothesis was developed to consider the effect of the category to which the neighbor belongs. Following algorithm was developed for this purpose:
+
+1. Calculate the average speed for each of the `highway` category.
+2. Rank each category according to the average speed. Highest speed category ranks 1st and lowest speed category ranks last.
+3. Calculate the weights according to the average speed. (Used weighted average for this purpose) 
+4. Consider all the neighboring edges of an edge `e`, and consider two new features `increasing` and `decreasing`. 
+5. `increasing` is the sum of weights of all the edges which have category ranks less or equal to that of edge `e`.
+6. `decreasing` is the sum of weights of all the edges which have category ranks more than that of edge `e`.
+Following figure illustrates the algorithm to compute `increasing` and `decreasing`.
+![2](https://user-images.githubusercontent.com/2561578/37563578-398f42a4-2a41-11e8-93f8-fc5622894315.png)
+Hence the data had these features: `highway`, `curvature`, increasing`, and `decreasing`.
+### Model 5- Random Forest
+
+
 
