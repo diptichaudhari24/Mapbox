@@ -51,7 +51,7 @@ Drawback: This model blindly considers the extreme outliers hence the predicted 
 
 ### Model 3- Categorical mode speed
 Like model 2 this model also considers the categorical feature- `highway`, and returns the most frequent speed value of the roads belonging the category of the test data point. For example, the mode value for motorway category is 54 km/hr, the model predicts the same speed for any test point belonging to that category.
-Drawback: Relatively less error as the `highway` type and the extreme outliers are ignored. But again, this model has a high bias 
+Drawback: Relatively less error as the `highway` type is considered and the extreme outliers are ignored. But again, this model has a high bias 
 
 ### Model 4- One-way vs two-way road segregation analysis
 This model applies separate algorithms for predicting the speed of one-way and two-way roads. For one-way roads, it again used the categorical mode value as model 3 performed better than model 2.
