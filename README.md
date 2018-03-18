@@ -93,3 +93,20 @@ Random Forests works by training numerous decision trees,"forest" each based on 
 The model created using following parameters
 `regr = RandomForestRegressor( n_estimators=1000, max_depth=10, min_samples_leaf=50, oob_score= True, random_state=0)
 `
+- n_estimators: Number of tress in the forest. At 1000 the predictions were stronger and more stable.
+- min_sample_leaf: Leaf is the end node of a decision tree. A smaller leaf makes the model more prone to capturing noise in train data.
+- max_depth: Maximum depth of tree. 
+- oob_score: Cross validation method.
+- bootstrap: True by default. Reduce the variance in model predictions.
+
+#### Cross Validation Technique
+Random forest are less prone to over-fitting. Along with the `oob_score` cross validation set was tested against the model and manually perform [grid search with CV](http://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html).
+ 
+#### Model Performance 
+The model had fair [r2 score](https://en.wikipedia.org/wiki/Coefficient_of_determination)
+
+- Training dataset r2: Cofficient of Determination 0.69
+- Testing dataset r2: Cofficient of Determination 0.68
+
+RMSE for ML model: **9.48**, which is not very less than the previous models but here the ML model it does a fair trade off between bias and variance. 
+
