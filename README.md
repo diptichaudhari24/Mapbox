@@ -67,10 +67,10 @@ The performance of above models in terms of RMSE is represented as below:
 Now, after having basic data engineering it was time to dive deep into Open Street Map feature's domain. 
 ### Feature Engineering
 #### Curvature
-Even though all the data points (roads), in the dataset were of `type`  [LineString](https://tools.ietf.org/html/rfc7946#appendix-A.2), consider the following  [lineString](https://tools.ietf.org/html/rfc7946#appendix-A.2) examples. 
+Even though all the data points (roads), in the dataset were of `type`  [LineString](https://tools.ietf.org/html/rfc7946#appendix-A.2), consider the following  [Linestring](https://tools.ietf.org/html/rfc7946#appendix-A.2) examples. 
 ![1](https://user-images.githubusercontent.com/2561578/37563086-09829db4-2a36-11e8-8c6b-39df16c79226.jpeg)
 
-Naturally, the curvature of the road affects the speed hence for each data point, the curvature was calculated.
+Naturally, the curvature of the road affects the speed hence for each data point, the `curvature` was calculated.
 #### Neighbouring Roads
 The road network can be viewed as a directed graph. Hence while predicting the speed of an edge(road), the neighboring edge's(connected roads) speed should not be ignored. A hypothesis was developed to consider the effect of the category to which the neighbor belongs. Following algorithm was developed for this purpose:
 
@@ -82,15 +82,13 @@ The road network can be viewed as a directed graph. Hence while predicting the s
 6. `decreasing` is the sum of weights of all the edges which have category ranks more than that of edge `e`.
 Following figure illustrates the algorithm to compute `increasing` and `decreasing`.
 ![2](https://user-images.githubusercontent.com/2561578/37563578-398f42a4-2a41-11e8-93f8-fc5622894315.png)
-Hence the data had these features: `highway`, `curvature`, increasing`, and `decreasing`.
+Hence the data had these features: `highway`, `curvature`, `increasing`, and `decreasing`.
 ### Model 5- Random Forest
 Using random forest ensemble technique, regression model is built. Random forest are less prone to over fitting along with that cross validation set was tested against the model to verify that. The model had fair [r2 score](https://en.wikipedia.org/wiki/Coefficient_of_determination)
 
 
 Model Performance 
-
 Training dataset r2: Cofficient of Determination 0.69
-
 Testing dataset r2: Cofficient of Determination 0.68
 
 RMSE for ML model: **9.48**, which is not very less than the simpler models but here the model is does a fair trade off between bias and variance. 
