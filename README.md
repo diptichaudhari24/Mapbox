@@ -84,6 +84,10 @@ Following figure illustrates the algorithm to compute `increasing` and `decreasi
 ![2](https://user-images.githubusercontent.com/2561578/37563578-398f42a4-2a41-11e8-93f8-fc5622894315.png)
 Hence the data had these features: `highway`, `curvature`, increasing`, and `decreasing`.
 ### Model 5- Random Forest
-
+Using random forest ensemble technique, regression model is built. Random forest are less prone to over fitting along with that cross validation set was tested against the model to verify that. The model had fair [r2 score](https://en.wikipedia.org/wiki/Coefficient_of_determination)
+Model Performance 
+Training dataset r2: Cofficient of Determination 0.69
+Testing dataset r2: Cofficient of Determination 0.68
+RMSE for ML model: 9.48, which is not very less than the simpler models but here the model is does a fair trade off between bias and variance. 
 
 
